@@ -9,18 +9,18 @@ The Parasites firmware enhances existing features, adds new modes and functions,
 ## License
 
 | Component | License |
-|---|---|
+| --- | --- |
 | Code (AVR projects) | GPL 3.0 |
 | Code (STM32F projects) | MIT |
 | Hardware designs | CC-BY-SA-3.0 |
 
-Original author: Émilie Gillet (emilie.o.gillet@gmail.com)
+Original author: Émilie Gillet (<emilie.o.gillet@gmail.com>)
 
 ---
 
 ## Repository Structure
 
-```
+```text
 parasites/
 ├── README.md                          # Module listing and license info
 ├── presentation.org                   # Detailed feature documentation (Clouds, Frames, Tides)
@@ -73,7 +73,7 @@ parasites/
 ### STM32F10x (72 MHz, Medium Density)
 
 | Parameter | Value |
-|---|---|
+| --- | --- |
 | Crystal | 8 MHz |
 | CPU Clock | 72 MHz |
 | Family | STM32F10x |
@@ -85,7 +85,7 @@ parasites/
 ### STM32F4xx (168 MHz, High Performance)
 
 | Parameter | Value |
-|---|---|
+| --- | --- |
 | CPU Clock | 168 MHz |
 | Family | STM32F4xx |
 | Upload | JTAG or audio bootloader (QPSK) |
@@ -96,7 +96,7 @@ parasites/
 ### AVR
 
 | MCU | Module | Clock |
-|---|---|---|
+| --- | --- | --- |
 | ATMega88 | Branches | 8 MHz |
 | ATMega328P | Grids | 16 MHz |
 | ATMega32A4 | Edges | 32 MHz |
@@ -126,6 +126,7 @@ A digital macro-oscillator featuring over 40 synthesis algorithms organized into
   - Granular cloud
 
 **Key source files**:
+
 - `braids/braids.cc` — Main firmware entry point
 - `braids/macro_oscillator.cc/h` — Main oscillator interface
 - `braids/digital_oscillator.cc/h` — Digital synthesis algorithms
@@ -154,6 +155,7 @@ A granular texture processor with 6 playback modes:
 **Memory architecture**: 32 KB CCM reverb buffer, 2× downsampling for computation efficiency.
 
 **Key source files**:
+
 - `clouds/clouds.cc` — Main firmware entry point
 - `clouds/dsp/granular_processor.h` — Main processing engine
 - `clouds/dsp/grain.h` — Individual grain control
@@ -172,6 +174,7 @@ A granular texture processor with 6 playback modes:
 A physical modeling synthesizer using source → resonator topology:
 
 **Exciter types**:
+
 - Strike (impulse-based contact)
 - Blow (sustained breath)
 - Bow (friction-based)
@@ -182,6 +185,7 @@ A physical modeling synthesizer using source → resonator topology:
 Supports up to 4 voices in code (UI-limited to monophonic).
 
 **Key source files**:
+
 - `elements/elements.cc` — Main firmware
 - `elements/dsp/part.h` — Monophonic voice manager
 - `elements/dsp/voice.h` — Individual voice processor
@@ -208,6 +212,7 @@ A polyphonic resonator (up to 4 voices) with 6 resonator models:
 6. **String + Reverb** — Hybrid model
 
 **Key source files**:
+
 - `rings/dsp/part.h` — Polyphonic voice manager
 - `rings/dsp/resonator.h` — Resonance processor
 - `rings/dsp/string.h` — Karplus-Strong synthesis
@@ -232,6 +237,7 @@ A signal modulator with oversampled processing (4×–6× oversampling):
 **Processing chain**: Input stage (noise gate, soft clipping) → Core (quadrature modulation or vocoding) → SRC → Post-gain and limiting.
 
 **Key source files**:
+
 - `warps/dsp/modulator.h` — Main modulation engine
 - `warps/dsp/oscillator.h` — Wavetable oscillator
 - `warps/dsp/quadrature_oscillator.h` — I/Q oscillator
@@ -257,6 +263,7 @@ A function generator / LFO / envelope with:
 **Parasites additions**: Quantizer mode, Two-Bumps mode, harmonic oscillator enhancements.
 
 **Key source files**:
+
 - `tides/generator.h` — Main envelope/LFO generator
 - `tides/tides.cc` — Main firmware
 
@@ -278,6 +285,7 @@ A keyframe animation sequencer and 4-channel mixer:
 **Parasites additions**: Sequencer step-editing mode, Shift Register sequencer mode (random canon generator).
 
 **Key source files**:
+
 - `frames/keyframer.cc/h` — Keyframe interpolation engine
 - `frames/euclidean.cc/h` — Euclidean rhythm generation
 - `frames/poly_lfo.cc/h` — Polyphonic LFO
@@ -299,6 +307,7 @@ A dual-channel function generator with 12+ processor modes:
 - Number station (DTMF-style tone generation)
 
 **Key source files**:
+
 - `peaks/drums/` — Drum synthesis engines
 - `peaks/modulations/` — Modulation sources
 - `peaks/number_station/` — Tone generation
@@ -319,6 +328,7 @@ A dual-channel dynamics processor:
 - Lorenz attractor-based modulation (via SVF)
 
 **Key source files**:
+
 - `streams/processor.h` — Dual processing engine
 - `streams/compressor.h` — Dynamics compression
 - `streams/follower.h` — Envelope follower
@@ -342,6 +352,7 @@ A MIDI-to-CV/Gate converter:
 - VCA envelope
 
 **Key source files**:
+
 - `yarns/multi.h` — Multi-mode MIDI processor
 - `yarns/voice.h` — Individual voice with oscillator
 
@@ -361,6 +372,7 @@ A pattern-based drum sequencer:
 - MIDI interface
 
 **Key source files**:
+
 - `grids/pattern_generator.cc/h` — Drum pattern generation
 - `grids/clock.cc/h` — Clock management
 
@@ -379,6 +391,7 @@ A 4-voice chiptune synthesizer:
 - Hardware timer-based oscillator
 
 **Key source files**:
+
 - `edges/digital_oscillator.cc/h` — Chiptune synthesis
 - `edges/timer_oscillator.cc/h` — Timer-based oscillators
 - `edges/midi_handler.cc/h` — MIDI processing
@@ -407,7 +420,7 @@ A simple dual-channel probabilistic gate:
 These modules have no firmware — only hardware designs:
 
 | Module | Description |
-|---|---|
+| --- | --- |
 | **Links** | Utility (buffer, mixer) |
 | **Ripples** | Liquid 2-pole BP, 2-pole LP, 4-pole LP filter |
 | **Shades** | Triple attenuverter |
@@ -448,7 +461,7 @@ Extended AVR library for Edges: enhanced I/O, timer/interrupt management, utilit
 ### Toolchain Requirements
 
 | Platform | Toolchain | Path |
-|---|---|---|
+| --- | --- | --- |
 | STM32 (ARM) | GCC ARM 4.8.3 (`arm-none-eabi-gcc`) | `/usr/local/arm-4.8.3/` (configurable via `TOOLCHAIN_PATH`) |
 | AVR | `avr-gcc` + AVRDUDE | System default |
 | Resource generation | Python 2.5+ | System default |
@@ -508,7 +521,7 @@ python clouds/resources/src_filters.py  # Generates SRC filter coefficients
 ## Firmware Update Methods
 
 | Method | Encoding | Modules | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **WAV (QPSK)** | Quadrature Phase-Shift Keying | All STM32 modules | 48 kHz 16-bit audio file played to module via audio jack |
 | **WAV (FSK)** | Frequency-Shift Keying | All AVR modules | Audio-encoded firmware for AVR bootloader |
 | **SysEx (MIDI)** | MIDI System Exclusive | Yarns (and others) | Firmware delivered over MIDI using `hex2sysex.py` |
@@ -517,12 +530,14 @@ python clouds/resources/src_filters.py  # Generates SRC filter coefficients
 ### Audio Bootloader Parameters
 
 **STM32 (QPSK)**:
+
 - Sample rate: 48000 Hz
 - Bit rate: 12000
 - Clock rate: 6000
 - Page size: 256
 
 **AVR (FSK)**:
+
 - Sample rate: 40000 Hz
 - Bit rate: 16
 - Sync bytes: 8
@@ -586,7 +601,7 @@ python clouds/resources/src_filters.py  # Generates SRC filter coefficients
 ### Naming
 
 | Element | Convention | Example |
-|---|---|---|
+| --- | --- | --- |
 | Classes | PascalCase | `MacroOscillator`, `GranularProcessor` |
 | Methods | CamelCase | `Render()`, `Process()` |
 | Getters/Setters | snake_case | `set_pitch()`, `get_parameter()` |
@@ -641,7 +656,7 @@ Each module includes a `hardware_design/` directory containing schematics, PCB l
 ## Build Summary
 
 | Module | Platform | Toolchain | Bootloader | Update Method |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Braids | STM32F10x | ARM GCC | QPSK | WAV / JTAG |
 | Clouds | STM32F4xx | ARM GCC | QPSK | WAV / JTAG |
 | Elements | STM32F4xx | ARM GCC | QPSK | WAV / JTAG |
